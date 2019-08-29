@@ -11,6 +11,26 @@ package com.mycompany.hi;
  */
 public class App {
     
+        private String who;
+
+    /**
+     * Get the value of who
+     *
+     * @return the value of who
+     */
+    public String getWho() {
+        return who;
+    }
+
+    /**
+     * Set the value of who
+     *
+     * @param who new value of who
+     */
+    public void setWho(String who) {
+        this.who = who;
+    }
+
     private String greeting = "Hello";
     
     public String getGreeting() {
