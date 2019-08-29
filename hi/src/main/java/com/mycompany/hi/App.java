@@ -11,6 +11,16 @@ package com.mycompany.hi;
  */
 public class App {
     
+    private String greeting = "Hello";
+    
+    public String getGreeting() {
+        
+        return greeting;
+    }
+    
+    public void setGreeting(String greeting) {
+        this.greeting = greeting;
+    }
     public static void main(String[] args) throws Exception {
         
         App app = new App();
@@ -19,6 +29,7 @@ public class App {
 
     private void run() {
        
-        System.out.println("Hello World");
+        String who = "World";
+        System.out.println(this.greeting +  who + "!");
     }
 }
