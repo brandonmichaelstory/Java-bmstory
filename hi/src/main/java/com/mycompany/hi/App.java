@@ -30,6 +30,6 @@ public class App {
     private void run() {
        
         String who = "World";
-        System.out.println(this.greeting +  who + "!");
+        System.out.println(getGreeting() + " " +  who + "!");
     }
 }
