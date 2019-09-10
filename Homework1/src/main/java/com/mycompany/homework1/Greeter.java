@@ -11,4 +11,16 @@ package com.mycompany.homework1;
  */
 public class Greeter {
     
+    private String currentGreeting = null;
+    private String defaultGreeting = "Hello World!";
+    
+    public String getGreeting() {
+        
+        if (currentGreeting == null) {
+            return defaultGreeting;
+        }
+        else {
+            return currentGreeting;
+        }
+    }
 }
