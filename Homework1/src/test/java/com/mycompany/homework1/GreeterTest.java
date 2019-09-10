@@ -19,35 +19,48 @@ public class GreeterTest {
      * Test of getGreeting method, of class Greeter.
      */
     @Test
-    public void testGetGreetingNoCurrent() {
+    public void testGetCurrentGreetingNoCurrent() {
         //System.out.println("getGreeting");
         Greeter instance = new Greeter();
         String expResult = "Hello World!";
-        String result = instance.getGreeting();
+        String result = instance.getCurrentGreeting();
         assertEquals(expResult, result);
     }
 
     @Test
-    public void testGetGreetingWithCurrent() {
+    public void testGetCurrentGreetingWithCurrent() {
         //System.out.println("getGreeting");
         Greeter instance = new Greeter();
         String expResult = "Howdy!";
-        instance.setGreeting(expResult);
-        String result = instance.getGreeting();
+        instance.setCurrentGreeting(expResult);
+        String result = instance.getCurrentGreeting();
         assertEquals(expResult, result);
     }
     /**
      * Test of setGreeting method, of class Greeter.
      */
     @Test
-    public void testSetGreeting() {
+    public void testSetCurrentGreeting() {
         //System.out.println("setGreeting");
         String greeting = "Hey There!";
         Greeter instance = new Greeter();
-        instance.setGreeting(greeting);
-        String expResult = instance.getGreeting();
+        instance.setCurrentGreeting(greeting);
+        String expResult = instance.getCurrentGreeting();
         assertEquals(expResult, greeting);
         // TODO review the generated test code and remove the default call to fail.
     }
     
+    @Test
+    public void testGreetingsArrayList() {
+        //System.out.println("setGreeting");
+        //String greeting = "Hey There!";
+        Greeter instance = new Greeter();
+        int size = instance.Greetings.size();
+        String testString = "Howdy!";
+        instance.setCurrentGreeting(testString);
+        assertEquals(size + 1, instance.Greetings.size());
+        assertEquals(testString, instance.Greetings.get(size));
+        //assertEquals(expResult, greeting);
+        // TODO review the generated test code and remove the default call to fail.
+    }
 }
