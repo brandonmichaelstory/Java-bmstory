@@ -23,4 +23,8 @@ public class Greeter {
             return currentGreeting;
         }
     }
+    
+    public void setGreeting(String greeting) {
+        this.currentGreeting = greeting;
+    }
 }
