@@ -4,17 +4,25 @@
  * and open the template in the editor.
  */
 package com.mycompany.homework1;
-
+import java.util.ArrayList;
+import java.util.Random;
 /**
  *
  * @author micha
  */
 public class Greeter {
     
+    private ArrayList<String> Greetings = new ArrayList<String>();
     private String currentGreeting = null;
     private String defaultGreeting = "Hello World!";
     
-    public String getGreeting() {
+    public Greeter() {
+        
+        this.Greetings.add("Hola!");
+        this.Greetings.add("Whats Up!");
+        this.Greetings.add("Hi!");
+    }
+    public String getCurrentGreeting() {
         
         if (currentGreeting == null) {
             return defaultGreeting;
@@ -24,7 +32,17 @@ public class Greeter {
         }
     }
     
-    public void setGreeting(String greeting) {
+    public void setCurrentGreeting(String greeting) {
+        
+        if (!this.Greetings.contains(greeting)) {
+            this.Greetings.add(greeting);
+        }
         this.currentGreeting = greeting;
+    }
+    
+    public String getRandomGreeting() {
+      
+        Random r = new Random();
+        return this.Greetings.get(r.nextInt(this.Greetings.size()));
     }
 }
