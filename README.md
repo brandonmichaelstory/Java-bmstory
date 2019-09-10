@@ -16,4 +16,4 @@
 
 | Assignment | Due Date | Done | Location | Notes |
 |-----------:|:--------:|:----:|:--------:|:-----:|
-|1 - Assignment 1 | 11-Sep-19 | X | | Not Completed Yet |
+|1 - Homework 1 | 11-Sep-19 | X | https://github.com/brandonmichaelstory/Java-bmstory/tree/master/Homework1/src  | Completed with working tests |
