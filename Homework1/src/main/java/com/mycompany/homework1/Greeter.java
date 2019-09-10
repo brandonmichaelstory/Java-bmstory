@@ -12,8 +12,9 @@ import java.util.Random;
  */
 public class Greeter {
     
-    private ArrayList<String> Greetings = new ArrayList<String>();
-    private String currentGreeting = null;
+    // public for testing
+    public ArrayList<String> Greetings = new ArrayList<String>();
+    private String currentGreeting = "Hello World";
     private String defaultGreeting = "Hello World!";
     
     public Greeter() {
@@ -45,4 +46,6 @@ public class Greeter {
         Random r = new Random();
         return this.Greetings.get(r.nextInt(this.Greetings.size()));
     }
+   
+    
 }
