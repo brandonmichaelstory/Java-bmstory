@@ -22,7 +22,7 @@ public class App {
     public boolean fixable(String text) {
         boolean canFix = false;
         int upperCase = 0;
-        for (int i = 0; i < text.length(); i++) {
+        for (int i = 1; i < text.length(); i++) {
             
             if (text.charAt(i) > 'A' && text.charAt(i) < 'Z') {
                 upperCase++;
