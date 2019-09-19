@@ -55,9 +55,19 @@ public class AppTest {
     /**
      * Test of run method, of class App.
      */
+    @Test public void testReadData() {
+        App instance = new App();
+        instance.in = new Scanner("3 1" + System.lineSeparator());
+        instance.ReadData();
+        int expP = 3, expT = 1;
+        int expPT = expP * expT;
+        assertEquals(expP, instance.P);
+        assertEquals(expT, instance.T);
+        assertEquals(expPT, instance.PT);
+    }
+    
     @Test
     public void testRun() {
-        //System.out.println("run");
         App instance = new App();
         instance.in = new Scanner("2 2" + System.lineSeparator() + "abc" + 
                 System.lineSeparator() + "Def" + System.lineSeparator() + "DDG" +
