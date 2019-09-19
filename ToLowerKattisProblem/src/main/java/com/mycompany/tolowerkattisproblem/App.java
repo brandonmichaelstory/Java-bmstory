@@ -14,4 +14,19 @@ public class App {
     public static void main(String[] args) {
         
     }
+    
+    public boolean fixable(String text) {
+        boolean canFix = false;
+        int upperCase = 0;
+        for (int i = 0; i < text.length(); i++) {
+            
+            if (text.charAt(i) > 'A' && text.charAt(i) < 'Z') {
+                upperCase++;
+            }
+        }
+        if (upperCase < 2) {
+            canFix = true;
+        }
+        return canFix;
+    }
 }
