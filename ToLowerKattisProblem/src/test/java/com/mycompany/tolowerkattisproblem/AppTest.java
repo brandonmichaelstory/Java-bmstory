@@ -5,7 +5,7 @@
  */
 package com.mycompany.tolowerkattisproblem;
 
-
+import java.util.Scanner;
 import java.util.ArrayList;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -55,17 +55,18 @@ public class AppTest {
     /**
      * Test of run method, of class App.
      */
-   /* @Test
+    @Test
     public void testRun() {
-        System.out.println("run");
+        //System.out.println("run");
         App instance = new App();
-        int expResult = 0;
+        instance.in = new Scanner("2 2" + System.lineSeparator() + "abc" + 
+                System.lineSeparator() + "Def" + System.lineSeparator() + "DDG" +
+                System.lineSeparator() + "add");
+        int expResult = 1;
         int result = instance.run();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
-    */
+    
     
 }
