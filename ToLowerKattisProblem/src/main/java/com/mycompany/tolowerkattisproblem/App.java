@@ -15,6 +15,8 @@ public class App {
     
     public static void main(String[] args) {
         
+        App app = new App();
+        System.out.println(app.run());
     }
     
     public boolean fixable(String text) {
@@ -54,11 +56,18 @@ public class App {
                 int fixableCount = 0;
                 for (int j = 0; j < lines.size(); j++) {
                     
-                    fixable(lines.get(j));
+                    if (fixable(lines.get(j))) {
+                        fixableCount++;
+                    }
                 }
                 
+                if (fixableCount == T) {
+                    solved++;
+                }
                 lines.clear();
                 testCases = 0;
+                lines.add(s.nextLine());
+                testCases++;
             }
         }
         return solved;
