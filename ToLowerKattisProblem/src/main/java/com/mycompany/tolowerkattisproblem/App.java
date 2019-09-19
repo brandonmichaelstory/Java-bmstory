@@ -12,7 +12,6 @@ import java.util.ArrayList;
  */
 public class App {
     
-    
     public static void main(String[] args) {
         
         App app = new App();
@@ -20,16 +19,12 @@ public class App {
     }
     
     public boolean fixable(String text) {
-        boolean canFix = false;
-        int upperCase = 0;
+        boolean canFix = true;
         for (int i = 1; i < text.length(); i++) {
             
-            if (text.charAt(i) > 'A' && text.charAt(i) < 'Z') {
-                upperCase++;
+            if (text.charAt(i) < 'a' || text.charAt(i) > 'z') {
+                canFix = false;
             }
-        }
-        if (upperCase == 0) {
-            canFix = true;
         }
         return canFix;
     }
@@ -70,6 +65,7 @@ public class App {
             if (testProblemSet(T, lines) == true) {
                 solved++;
             }
+            lines.clear();
         }
         return solved;
     }
