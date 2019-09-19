@@ -5,6 +5,7 @@
  */
 package com.mycompany.tolowerkattisproblem;
 import java.util.Scanner;
+import java.util.ArrayList;
 /**
  *
  * @author micha
@@ -33,14 +34,33 @@ public class App {
     
     public int run() {
       
+        ArrayList<String> lines = new ArrayList<String>();
         Scanner s = new Scanner(System.in);
         int solved = 0;
         int P, T, PT;
         P = s.nextInt();
         T = s.nextInt();
+        s.nextLine();
         PT = P * T;
         
-        
+        int testCases = 0;
+        for (int i = 0; i < PT; i++) {
+            
+            if (testCases < T) {
+                testCases++;
+                lines.add(s.nextLine());
+            }
+            else {
+                int fixableCount = 0;
+                for (int j = 0; j < lines.size(); j++) {
+                    
+                    fixable(lines.get(j));
+                }
+                
+                lines.clear();
+                testCases = 0;
+            }
+        }
         return solved;
     }
 }
