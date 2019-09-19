@@ -12,12 +12,20 @@ import java.util.ArrayList;
  */
 public class App {
     
+    int P, T, PT;
+    Scanner in = new Scanner(System.in);
     public static void main(String[] args) {
         
         App app = new App();
         System.out.println(app.run());
     }
     
+    public void ReadData() {
+        P = in.nextInt();
+        T = in.nextInt();
+        PT = P *T;
+        in.nextLine();
+    }
     public boolean fixable(String text) {
         boolean canFix = true;
         for (int i = 1; i < text.length(); i++) {
@@ -46,20 +54,14 @@ public class App {
     }
     public int run() {
       
+        ReadData();
         ArrayList<String> lines = new ArrayList<String>();
-        Scanner s = new Scanner(System.in);
         int solved = 0;
-        int P, T, PT;
-        P = s.nextInt();
-        T = s.nextInt();
-        s.nextLine();
-        PT = P * T;
-        
         int counter = 0;
         while(counter < PT) {
             
             for (int i = 0; i < T; i++) {
-                lines.add(s.nextLine());
+                lines.add(in.nextLine());
                 counter++;
             }
             if (testProblemSet(T, lines) == true) {
