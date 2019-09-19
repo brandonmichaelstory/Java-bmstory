@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package com.mycompany.tolowerkattisproblem;
-
+import java.util.Scanner;
 /**
  *
  * @author micha
  */
 public class App {
+    
     
     public static void main(String[] args) {
         
@@ -28,5 +29,18 @@ public class App {
             canFix = true;
         }
         return canFix;
+    }
+    
+    public int run() {
+      
+        Scanner s = new Scanner(System.in);
+        int solved = 0;
+        int P, T, PT;
+        P = s.nextInt();
+        T = s.nextInt();
+        PT = P * T;
+        
+        
+        return solved;
     }
 }
