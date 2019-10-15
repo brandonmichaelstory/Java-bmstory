@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.collectionhomework;
+import java.io.FileWriter;
 import java.util.Scanner;
 import java.util.HashMap;
 /**
@@ -36,12 +37,32 @@ class Food {
 public class FoodMap {
     
     Scanner forConsole = new Scanner(System.in);
+    FileWriter fw;
     HashMap<String, Food> foods = new HashMap<>();
     public static void main(String[] args) {
         FoodMap fm = new FoodMap();
-        fm.recieveInput();
+        boolean keepRunning = true;
+        while (keepRunning) {
+            try {
+            keepRunning = fm.recieveInput();
+            }
+            catch (Exception e) {
+                System.out.println(e.toString());
+            }
+        }
     }
-    public boolean recieveInput()  {
+    
+    public String nutritionToString(Food f) {
+        
+        String s = "";
+        s = s.concat(Integer.toString(f.getCalories()) + " ");
+        s = s.concat(Integer.toString(f.getProtein()) + " ");
+        s = s.concat(Integer.toString(f.getCarbs()) + " ");
+        s = s.concat(Integer.toString(f.getFat()) + " ");
+        return s;
+    }
+    
+    public boolean recieveInput() throws Exception {
         
         boolean continueInput = true;
         String answer;
@@ -62,6 +83,34 @@ public class FoodMap {
             viewFood();
         }
         else if (answer.equals("exit")) {
+            try {
+            fw = new FileWriter("C:\\Users\\micha\\Desktop\\output.txt");
+            }
+            catch (Exception e) {
+                System.out.println(e.toString());
+            }
+            foods.forEach((key, value) -> { 
+                    try {
+                        fw.write(key + System.lineSeparator() + nutritionToString(value) + System.lineSeparator());
+                        fw.flush();
+                        
+                    }
+                    catch (Exception e) {
+                        System.out.println("An error occurred when writing to file");
+                        System.out.println(e.toString());
+                    }
+                    finally {
+                        try {
+                            fw.flush();
+                          
+                        }
+                        catch (Exception e) {
+                            System.out.println(e.toString());
+                        }
+                    }
+                }
+            );
+            fw.close();
             continueInput = false;
         }
         return continueInput;
