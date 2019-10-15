@@ -138,4 +138,19 @@ public class FoodMap {
         
         System.out.println("Calories: " + f.calories + " Protein: " + f.protein + " Carbs: " + f.carbs + " Fat: " + f.fat);
     }
+    
+    public void viewFood() {
+        System.out.println("<viewFood>");
+        System.out.println("What food would you like  to see nutritional information about?");
+        String foodname;
+        foodname = forConsole.nextLine();
+        foodname = cleanInput(foodname);
+        if (this.foods.containsKey(foodname)) {
+            Food temp = this.foods.get(foodname);
+            displayFood(temp);
+        }
+        else {
+            System.out.println("That food curretly is not enter. Make sure you've spelled it correctly or add it to the program.");
+        }
+    }
 }
