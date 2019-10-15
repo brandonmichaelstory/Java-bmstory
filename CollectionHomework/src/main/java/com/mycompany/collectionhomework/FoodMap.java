@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.collectionhomework;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Scanner;
 import java.util.HashMap;
@@ -38,6 +39,8 @@ public class FoodMap {
     
     Scanner forConsole = new Scanner(System.in);
     FileWriter fw;
+    FileReader fr;
+    Scanner forFile;
     HashMap<String, Food> foods = new HashMap<>();
     public static void main(String[] args) {
         FoodMap fm = new FoodMap();
@@ -50,6 +53,41 @@ public class FoodMap {
                 System.out.println(e.toString());
             }
         }
+    }
+    
+    public FoodMap() {
+        try {
+            readInputFile();
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+    public void readInputFile() throws Exception {
+        fr = new FileReader("C:\\Users\\micha\\Desktop\\output.txt");
+        forFile = new Scanner(fr);
+        forConsole = new Scanner(System.in);
+        int i = 0;
+        String food = "";
+        while(forFile.hasNextLine()) {
+            if (i %2 == 0) {
+                food = forFile.nextLine();
+                food = cleanInput(food);
+            }
+            else {
+                Food temp = new Food(1);
+                String info = forFile.nextLine();
+                info = cleanInput(info);
+                String[] numbers = info.split(" ");
+                temp.setCalories(Integer.parseInt(numbers[0]));
+                temp.setProtein(Integer.parseInt(numbers[1]));
+                temp.setCarbs(Integer.parseInt(numbers[2]));
+                temp.setFat(Integer.parseInt(numbers[3]));
+                foods.put(food, temp);
+            }
+            i += 1;
+        }
+        fr.close();
     }
     
     public String nutritionToString(Food f) {
