@@ -93,4 +93,49 @@ public class FoodMap {
         }
         
     }
+    
+    public void editFood() {
+        System.out.println("<editFood>");
+        String answer;
+        System.out.println("What food would you like to edit?");
+        answer = forConsole.nextLine();
+        answer = cleanInput(answer);
+        if (foods.containsKey(answer)) {
+            Food f = foods.get(answer);
+            displayFood(f);
+            System.out.println("What would you like to edit? (calories, protein, carbs, fat)");
+            answer = forConsole.nextLine();
+            answer = answer.toLowerCase();
+            if (answer.equals("calories")) {
+                System.out.println("Enter the new calories");
+                int c = forConsole.nextInt();
+                f.calories = c;
+            
+            }
+            else if (answer.equals("protein")) {
+                System.out.println("Enter the new protein.");
+                int p = forConsole.nextInt();
+                f.protein = p;
+            }
+            else if (answer.equals("carb")) {
+                System.out.println("Enter the new carb.");
+                int c = forConsole.nextInt();
+                f.carbs = c;
+            }
+            else if (answer.equals("fat")) {
+                System.out.println("Enter the new fat.");
+                int fat = forConsole.nextInt();
+                f.fat = fat;  
+            }
+            forConsole.nextLine();
+        }
+        else {
+            System.out.println("That food is not currently entered. Make sure you've used the correct spelling or add it to the program.");
+        }
+    }
+    
+    public void displayFood(Food f) {
+        
+        System.out.println("Calories: " + f.calories + " Protein: " + f.protein + " Carbs: " + f.carbs + " Fat: " + f.fat);
+    }
 }
