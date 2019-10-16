@@ -56,12 +56,10 @@ public class FoodTest {
     @Test
     public void testGetFat() {
         System.out.println("getFat");
-        Food instance = null;
-        int expResult = 0;
+        Food instance = new Food(75, 4, 7, 4);
+        int expResult = 4;
         int result = instance.getFat();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -70,11 +68,10 @@ public class FoodTest {
     @Test
     public void testSetCalories() {
         System.out.println("setCalories");
-        int calories = 0;
-        Food instance = null;
+        int calories = 215;
+        Food instance = new Food(210);
         instance.setCalories(calories);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(calories, instance.getCalories());
     }
 
     /**
@@ -83,11 +80,10 @@ public class FoodTest {
     @Test
     public void testSetProtein() {
         System.out.println("setProtein");
-        int protein = 0;
-        Food instance = null;
+        int protein = 4;
+        Food instance = new Food(170);
         instance.setProtein(protein);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(protein, instance.getProtein());
     }
 
     /**
