@@ -25,11 +25,21 @@ public class FoodMapTest {
      */
     @Test
     public void testReadInputFile() throws Exception {
-        /*System.out.println("readInputFile");
+        System.out.println("readInputFile");
         FoodMap instance = new FoodMap();
-        instance.readInputFile();*/
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean expectedResult = true;
+        try {
+            instance.readInputFile();
+            assertEquals(expectedResult, instance.foods.containsKey("white rice"));
+            Food f = instance.foods.get("white rice");
+            assertEquals(170, f.getCalories());
+            assertEquals(4, f.getProtein());
+            assertEquals(34, f.getCarbs());
+            assertEquals(1, f.getFat());
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
     /**
