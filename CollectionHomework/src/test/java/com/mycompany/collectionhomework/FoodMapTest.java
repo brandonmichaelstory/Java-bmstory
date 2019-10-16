@@ -22,9 +22,9 @@ public class FoodMapTest {
      */
     @Test
     public void testReadInputFile() throws Exception {
-        System.out.println("readInputFile");
+        /*System.out.println("readInputFile");
         FoodMap instance = new FoodMap();
-        instance.readInputFile();
+        instance.readInputFile();*/
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -34,12 +34,12 @@ public class FoodMapTest {
      */
     @Test
     public void testNutritionToString() {
-        System.out.println("nutritionToString");
+        /*System.out.println("nutritionToString");
         Food f = null;
         FoodMap instance = new FoodMap();
         String expResult = "";
         String result = instance.nutritionToString(f);
-        assertEquals(expResult, result);
+        assertEquals(expResult, result);*/
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -49,11 +49,12 @@ public class FoodMapTest {
      */
     @Test
     public void testRecieveInput() throws Exception {
-        System.out.println("recieveInput");
+        /*System.out.println("recieveInput");
         FoodMap instance = new FoodMap();
         boolean expResult = false;
         boolean result = instance.recieveInput();
         assertEquals(expResult, result);
+        */
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -64,13 +65,17 @@ public class FoodMapTest {
     @Test
     public void testCleanInput() {
         System.out.println("cleanInput");
-        String answer = "";
+        String answer = "    HeLlo ";
+        String answer2 = "BYe     ";
+        String expected = "hello";
+        String expected2 = "bye";
+        String result = "", result2 = "";
         FoodMap instance = new FoodMap();
-        String expResult = "";
-        String result = instance.cleanInput(answer);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        result = instance.cleanInput(answer);
+        result2 = instance.cleanInput(answer2);
+        
+        assertEquals(expected, result);
+        assertEquals(expected2, result2);
     }
 
     /**
@@ -78,9 +83,9 @@ public class FoodMapTest {
      */
     @Test
     public void testAddFood() {
-        System.out.println("addFood");
+        /*System.out.println("addFood");
         FoodMap instance = new FoodMap();
-        instance.addFood();
+        instance.addFood();*/
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -90,9 +95,9 @@ public class FoodMapTest {
      */
     @Test
     public void testEditFood() {
-        System.out.println("editFood");
+        /*System.out.println("editFood");
         FoodMap instance = new FoodMap();
-        instance.editFood();
+        instance.editFood();*/
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -102,10 +107,10 @@ public class FoodMapTest {
      */
     @Test
     public void testDisplayFood() {
-        System.out.println("displayFood");
+        /*System.out.println("displayFood");
         Food f = null;
         FoodMap instance = new FoodMap();
-        instance.displayFood(f);
+        instance.displayFood(f);*/
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -115,9 +120,9 @@ public class FoodMapTest {
      */
     @Test
     public void testViewFood() {
-        System.out.println("viewFood");
+        /*System.out.println("viewFood");
         FoodMap instance = new FoodMap();
-        instance.viewFood();
+        instance.viewFood();*/
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
