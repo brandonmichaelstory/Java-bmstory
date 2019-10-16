@@ -40,7 +40,6 @@ public class FoodMapTest {
         System.out.println("nutritionToString");
         FoodMap instance = new FoodMap();
         String in = "hamburger" + System.lineSeparator() + "210 19 17 15" + System.lineSeparator();
-        assertEquals(17, instance.foods.get("hamburger").getCarbs());
         instance.forConsole = new Scanner(in);
         instance.addFood();
         String expectedResult = "210 19 17 15 ";
@@ -52,14 +51,9 @@ public class FoodMapTest {
      */
     @Test
     public void testRecieveInput() throws Exception {
-        /*System.out.println("recieveInput");
+        System.out.println("recieveInput");
         FoodMap instance = new FoodMap();
-        boolean expResult = false;
-        boolean result = instance.recieveInput();
-        assertEquals(expResult, result);
-        */
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+      
     }
 
     /**
@@ -108,10 +102,10 @@ public class FoodMapTest {
         System.out.println("editFood");
         FoodMap instance = new FoodMap();
         String in = "hamburger" + System.lineSeparator() + "210 19 17 15" + System.lineSeparator();
-        assertEquals(17, instance.foods.get("hamburger").getCarbs());
         instance.forConsole = new Scanner(in);
         instance.addFood();
-        in = "edit" + System.lineSeparator() + "hamburger" + System.lineSeparator() + "carbs" + "0" + System.lineSeparator();
+        assertEquals(17, instance.foods.get("hamburger").getCarbs());
+        in = "hamburger" + System.lineSeparator() + "carbs" + System.lineSeparator() +  "0" + System.lineSeparator();
         instance.forConsole = new Scanner(in);
         instance.editFood();
         assertEquals(0, instance.foods.get("hamburger").getCarbs());
@@ -142,15 +136,14 @@ public class FoodMapTest {
         System.out.println("viewFood");
         FoodMap instance = new FoodMap();
         String in = "hamburger" + System.lineSeparator() + "210 19 17 15" + System.lineSeparator();
-        assertEquals(17, instance.foods.get("hamburger").getCarbs());
         instance.forConsole = new Scanner(in);
         instance.addFood();
-        in = "view" + System.lineSeparator() + "hamburger" + System.lineSeparator();
-        instance.forConsole = new Scanner(in);
-        instance.viewFood();
+        in = "hamburger" + System.lineSeparator();
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
-        String expected = "<viewFood>" + System.lineSeparator() + "What food would you like  to see nutritional information about?"
+        instance.forConsole = new Scanner(in);
+        instance.viewFood();
+        String expected = "<viewFood>" + System.lineSeparator() + "What food would you like to see nutritional information about?"
             + System.lineSeparator() + "Calories: " + "210"+ " Protein: " + "19" + " Carbs: " + "17" + " Fat: " + "15" + System.lineSeparator();
         assertEquals(expected, output.toString());
     }
