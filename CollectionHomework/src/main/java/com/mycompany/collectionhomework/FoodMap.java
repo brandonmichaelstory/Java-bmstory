@@ -104,13 +104,13 @@ public class FoodMap {
         
         boolean continueInput = true;
         String answer;
-        answer = forConsole.nextLine();
-        answer = cleanInput(answer);
         System.out.println("What would you like to do?");
         System.out.println("Add a new food");
         System.out.println("Edit an old food");
         System.out.println("View the info about a food");
         System.out.println("exit");
+        answer = forConsole.nextLine();
+        answer = cleanInput(answer);
         if (answer.equals("add")) {
             addFood();
         }
