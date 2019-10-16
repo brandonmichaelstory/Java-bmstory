@@ -37,14 +37,14 @@ public class FoodMapTest {
      */
     @Test
     public void testNutritionToString() {
-        /*System.out.println("nutritionToString");
-        Food f = null;
+        System.out.println("nutritionToString");
         FoodMap instance = new FoodMap();
-        String expResult = "";
-        String result = instance.nutritionToString(f);
-        assertEquals(expResult, result);*/
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String in = "hamburger" + System.lineSeparator() + "210 19 17 15" + System.lineSeparator();
+        assertEquals(17, instance.foods.get("hamburger").getCarbs());
+        instance.forConsole = new Scanner(in);
+        instance.addFood();
+        String expectedResult = "210 19 17 15 ";
+        assertEquals(expectedResult, instance.nutritionToString(instance.foods.get("hamburger")));
     }
 
     /**
