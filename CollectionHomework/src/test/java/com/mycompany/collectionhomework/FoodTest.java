@@ -92,11 +92,10 @@ public class FoodTest {
     @Test
     public void testSetCarbs() {
         System.out.println("setCarbs");
-        int carbs = 0;
-        Food instance = null;
+        int carbs = 77;
+        Food instance = new Food(650);
         instance.setCarbs(carbs);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(carbs, instance.getCarbs());
     }
 
     /**
@@ -105,11 +104,10 @@ public class FoodTest {
     @Test
     public void testSetFat() {
         System.out.println("setFat");
-        int fat = 0;
-        Food instance = null;
+        int fat = 5;
+        Food instance = new Food(300);
         instance.setFat(fat);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(fat, instance.getFat());
     }
     
 }
