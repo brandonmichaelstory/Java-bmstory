@@ -5,6 +5,9 @@
  */
 package com.mycompany.collectionhomework;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.Scanner;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -107,12 +110,16 @@ public class FoodMapTest {
      */
     @Test
     public void testDisplayFood() {
-        /*System.out.println("displayFood");
-        Food f = null;
-        FoodMap instance = new FoodMap();
-        instance.displayFood(f);*/
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       System.out.println("displayFood");
+       FoodMap instance = new FoodMap();
+       String in = "hamburger" + System.lineSeparator() + "210 19 17 15" + System.lineSeparator();
+       instance.forConsole = new Scanner(in);
+       instance.addFood();
+       ByteArrayOutputStream output = new ByteArrayOutputStream();
+       System.setOut(new PrintStream(output));
+       instance.displayFood(new Food(210, 19, 17, 15));
+       String expectedResult = "Calories: " + "210" + " Protein: " + "19" + " Carbs: " + "17" + " Fat: " + "15" + System.lineSeparator();
+       assertEquals(expectedResult, output.toString());
     }
 
     /**
