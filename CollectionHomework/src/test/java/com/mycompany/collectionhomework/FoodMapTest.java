@@ -53,7 +53,19 @@ public class FoodMapTest {
     public void testRecieveInput() throws Exception {
         System.out.println("recieveInput");
         FoodMap instance = new FoodMap();
-      
+        boolean expectedResult = true;
+        boolean result = false;
+        try {
+            String in = "add" + System.lineSeparator() + "hamburger" + System.lineSeparator() + "210 19 17 15" + System.lineSeparator();
+            instance.forConsole = new Scanner(in);
+            result = instance.recieveInput();
+            
+        }
+        catch(Exception e) {
+            System.out.println(e.toString());
+        }
+        
+        assertEquals(expectedResult, result);
     }
 
     /**
