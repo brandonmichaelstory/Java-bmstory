@@ -86,11 +86,18 @@ public class FoodMapTest {
      */
     @Test
     public void testAddFood() {
-        /*System.out.println("addFood");
+        System.out.println("addFood");
+        Food f1 = new Food(210, 19, 17, 15);
         FoodMap instance = new FoodMap();
-        instance.addFood();*/
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String in = "hamburger" + System.lineSeparator() + "210 19 17 15" + System.lineSeparator();
+        instance.forConsole = new Scanner(in);
+        instance.addFood();
+        Food f2 = instance.foods.get("hamburger");
+        assertEquals(true, instance.foods.containsKey("hamburger"));
+        assertEquals(f1.getCalories(), f2.getCalories());
+        assertEquals(f1.getProtein(), f2.getProtein());
+        assertEquals(f1.getCarbs(), f2.getCarbs());
+        assertEquals(f1.getFat(), f2.getFat());
     }
 
     /**
