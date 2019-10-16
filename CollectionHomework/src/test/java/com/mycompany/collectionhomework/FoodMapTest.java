@@ -105,11 +105,16 @@ public class FoodMapTest {
      */
     @Test
     public void testEditFood() {
-        /*System.out.println("editFood");
+        System.out.println("editFood");
         FoodMap instance = new FoodMap();
-        instance.editFood();*/
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String in = "hamburger" + System.lineSeparator() + "210 19 17 15" + System.lineSeparator();
+        assertEquals(17, instance.foods.get("hamburger").getCarbs());
+        instance.forConsole = new Scanner(in);
+        instance.addFood();
+        in = "edit" + System.lineSeparator() + "hamburger" + System.lineSeparator() + "carbs" + "0" + System.lineSeparator();
+        instance.forConsole = new Scanner(in);
+        instance.editFood();
+        assertEquals(0, instance.foods.get("hamburger").getCarbs());
     }
 
     /**
@@ -134,11 +139,20 @@ public class FoodMapTest {
      */
     @Test
     public void testViewFood() {
-        /*System.out.println("viewFood");
+        System.out.println("viewFood");
         FoodMap instance = new FoodMap();
-        instance.viewFood();*/
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String in = "hamburger" + System.lineSeparator() + "210 19 17 15" + System.lineSeparator();
+        assertEquals(17, instance.foods.get("hamburger").getCarbs());
+        instance.forConsole = new Scanner(in);
+        instance.addFood();
+        in = "view" + System.lineSeparator() + "hamburger" + System.lineSeparator();
+        instance.forConsole = new Scanner(in);
+        instance.viewFood();
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        String expected = "<viewFood>" + System.lineSeparator() + "What food would you like  to see nutritional information about?"
+            + System.lineSeparator() + "Calories: " + "210"+ " Protein: " + "19" + " Carbs: " + "17" + " Fat: " + "15" + System.lineSeparator();
+        assertEquals(expected, output.toString());
     }
     
 }
