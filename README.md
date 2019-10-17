@@ -18,3 +18,4 @@
 |-----------------:|:--------:|:----:|:------------------:|:-----:|
 | 1 - Hello World/Greeting | 11-Sep-19 | ☑ | [HERE](https://github.com/brandonmichaelstory/Java-bmstory/tree/master/Homework1) | Completed with working tests |
 | 2 - Kattis Problem | 19-Sep-19| ☑ | [HERE](https://github.com/brandonmichaelstory/Java-bmstory/tree/master/ToLowerKattisProblem) | Solved Kattis Problem With Tests |
+| 3- Collection Homework | 17-Oct-19 | X | [HERE]() | made an applicaction that uses a Hashmap to store food and nutritional facts about them |
