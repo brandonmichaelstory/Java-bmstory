@@ -16,18 +16,7 @@ public class FactoryTest {
     
     public FactoryTest() {
     }
-    /**
-     * Test of main method, of class Factory.
-     */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        Factory.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+    
     /**
      * Test of getFinishedCars method, of class Factory.
      */
@@ -51,9 +40,11 @@ public class FactoryTest {
     public void testUpdateFinishedCars() {
         System.out.println("updateFinishedCars");
         Factory instance = new Factory(1);
+        int expResult = instance.getFinishedCars() + 1;
+        //AssemblyLine l = new AssemblyLine(instance, PaintColor.BLACK, InteriorMaterial.LEATHER);
+        //l.buildCar();
         instance.updateFinishedCars();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, instance.getFinishedCars());
     }
 
     /**
