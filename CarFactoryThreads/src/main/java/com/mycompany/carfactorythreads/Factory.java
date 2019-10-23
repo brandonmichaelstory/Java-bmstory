@@ -28,6 +28,26 @@ class Car {
        this.paintcolor = paintcolor;
    }
 }
+class AssemblyLine {
+
+
+	Factory factory;
+	PaintColor availablePaintColor;
+	InteriorMaterial availableInterior;
+	AssemblyLine(Factory factory, PaintColor availablePaintColor, InteriorMaterial availableInterior) {
+
+		this.factory = factory;
+		this.availablePaintColor = availablePaintColor;
+		this.availableInterior = availableInterior;
+
+	}
+
+	public void buildCar() {
+
+
+	}
+
+}
 public class Factory {
     
     int finishedCars = 0;
