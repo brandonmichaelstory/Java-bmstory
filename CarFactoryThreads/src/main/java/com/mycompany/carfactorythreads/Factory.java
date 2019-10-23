@@ -27,6 +27,14 @@ class Car {
        this.interior = interior;
        this.paintcolor = paintcolor;
    }
+   
+   public PaintColor getPaint() {
+       return this.paintcolor;
+   }
+   
+   public InteriorMaterial getInterior() {
+       return this.interior;
+   }
 }
 class AssemblyLine {
 
@@ -61,6 +69,13 @@ public class Factory {
     private Object inventoryLock = new Object();
     public static void main(String[] args) {
         
+        int i = 0;
+        Factory f1 = new Factory();
+        f1.production();
+        for (var x : f1.inventory) {
+            System.out.println("Car: " + i + " Color: " + x.getPaint() + " Interior: " + x.getInterior());
+            i++;
+        }
     }
     
     public int getFinishedCars() {
@@ -103,12 +118,15 @@ public class Factory {
             
             case 0:
 		pc = PaintColor.RED;
+                break;
             case 1:
 		pc = PaintColor.BLACK;
+                break;
             case 2:
 		pc = PaintColor.WHITE;
+                break;
 
-		}
+	}
         return pc;
     }
     
@@ -119,10 +137,13 @@ public class Factory {
 
             case 0:
 		im = InteriorMaterial.LEATHER;
+                break;
             case 1:
 		im = InteriorMaterial.SUEDE;
+                break;
             case 2:
 		im = InteriorMaterial.VINYL;
+                break;
 
 	}
         return im;
