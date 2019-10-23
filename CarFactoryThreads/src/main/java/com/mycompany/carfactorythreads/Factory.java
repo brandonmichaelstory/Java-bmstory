@@ -35,4 +35,36 @@ public class Factory {
     public static void main(String[] args) {
         
     }
+    
+    public PaintColor getColor(int number) {
+
+        PaintColor pc = null;
+	switch(number) {
+            
+            case 0:
+		pc = PaintColor.RED;
+            case 1:
+		pc = PaintColor.BLACK;
+            case 2:
+		pc = PaintColor.WHITE;
+
+		}
+        return pc;
+    }
+    
+    public InteriorMaterial getMaterial(int number) {
+
+        InteriorMaterial im = null;
+        switch(number) {
+
+            case 0:
+		im = InteriorMaterial.LEATHER;
+            case 1:
+		im = InteriorMaterial.SUEDE;
+            case 2:
+		im = InteriorMaterial.VINYL;
+
+	}
+        return im;
+    }
 }
