@@ -100,13 +100,13 @@ public class Factory {
     
     public void production() {
 		
-        while (finishedCars < 500) {
-            for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
 			
-                for (int j = 0; j < 3; j++) {
-                    assemblylines.add(new AssemblyLine(this, getColor(i), getMaterial(j)));
-                }
+            for (int j = 0; j < 3; j++) {
+                assemblylines.add(new AssemblyLine(this, getColor(i), getMaterial(j)));
             }
+        }
+        while (finishedCars < 500) { // maybe only put while loop around parrellel stream part {
             assemblylines.parallelStream().forEach(line ->line.buildCar());
         }
     }
