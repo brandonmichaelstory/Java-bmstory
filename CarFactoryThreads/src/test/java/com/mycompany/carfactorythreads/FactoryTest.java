@@ -79,13 +79,10 @@ public class FactoryTest {
     @Test
     public void testGetColor() {
         System.out.println("getColor");
-        int number = 0;
         Factory instance = new Factory(1);
-        PaintColor expResult = null;
-        PaintColor result = instance.getColor(number);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(PaintColor.RED, instance.getColor(0));
+        assertEquals(PaintColor.BLACK, instance.getColor(1));
+        assertEquals(PaintColor.WHITE, instance.getColor(2));
     }
 
     /**
@@ -94,13 +91,10 @@ public class FactoryTest {
     @Test
     public void testGetMaterial() {
         System.out.println("getMaterial");
-        int number = 0;
         Factory instance = new Factory(1);
-        InteriorMaterial expResult = null;
-        InteriorMaterial result = instance.getMaterial(number);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(InteriorMaterial.LEATHER, instance.getMaterial(0));
+        assertEquals(InteriorMaterial.SUEDE, instance.getMaterial(1));
+        assertEquals(InteriorMaterial.VINYL, instance.getMaterial(2));
     }
     
 }
