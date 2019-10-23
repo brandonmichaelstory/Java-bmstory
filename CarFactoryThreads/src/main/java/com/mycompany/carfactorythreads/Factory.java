@@ -44,21 +44,30 @@ class AssemblyLine {
 
     public void buildCar() {
 
-        Car c = new Car(availablePaintColor, availableInterior);
-        this.factory.updateInventory(c);
-        this.factory.updateFinishedCars();  
+        if (this.factory.getFinishedCars() < 500) {
+            Car c = new Car(availablePaintColor, availableInterior);
+            this.factory.updateInventory(c);
+            this.factory.updateFinishedCars();  
+        }
     }
 
 }
 public class Factory {
     
     int finishedCars = 0;
-    ArrayList<Car> inventory = new ArrayList<Car>(50);
+    ArrayList<Car> inventory = new ArrayList<Car>();
     ArrayList<AssemblyLine> assemblylines = new ArrayList<AssemblyLine>();
     private Object finishedCarsLock = new Object();
     private Object inventoryLock = new Object();
     public static void main(String[] args) {
         
+    }
+    
+    public int getFinishedCars() {
+        
+        synchronized(finishedCarsLock) {
+            return finishedCars;
+        }
     }
     public void updateFinishedCars() {
 
@@ -76,13 +85,15 @@ public class Factory {
     
     public void production() {
 		
-	for (int i = 0; i < 3; i++) {
+        while (finishedCars < 500) {
+            for (int i = 0; i < 3; i++) {
 			
-            for (int j = 0; j < 3; j++) {
-		assemblylines.add(new AssemblyLine(this, getColor(i), getMaterial(j)));
+                for (int j = 0; j < 3; j++) {
+                    assemblylines.add(new AssemblyLine(this, getColor(i), getMaterial(j)));
+                }
             }
-	}
-	assemblylines.parallelStream().forEach(line ->line.buildCar());
+            assemblylines.parallelStream().forEach(line ->line.buildCar());
+        }
     }
     
     public PaintColor getColor(int number) {
