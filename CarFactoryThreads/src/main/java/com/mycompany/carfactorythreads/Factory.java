@@ -9,6 +9,14 @@ import java.util.ArrayList;
  *
  * @author micha
  */
+
+enum PaintColor {
+    RED, BLACK, WHITE
+}
+
+enum InteriorMaterial {
+    LEATHER, SUEDE, VINYL
+}
 public class Factory {
     
     int finishedCars = 0;
