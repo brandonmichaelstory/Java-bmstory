@@ -17,6 +17,17 @@ enum PaintColor {
 enum InteriorMaterial {
     LEATHER, SUEDE, VINYL
 }
+
+class Car {
+
+   PaintColor paintcolor;
+   InteriorMaterial interior;
+   
+   Car(PaintColor paintcolor, InteriorMaterial interior) {
+       this.interior = interior;
+       this.paintcolor = paintcolor;
+   }
+}
 public class Factory {
     
     int finishedCars = 0;
