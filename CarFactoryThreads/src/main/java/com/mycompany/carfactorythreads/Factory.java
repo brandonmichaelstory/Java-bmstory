@@ -74,6 +74,17 @@ public class Factory {
 	}
     }
     
+    public void production() {
+		
+	for (int i = 0; i < 3; i++) {
+			
+            for (int j = 0; j < 3; j++) {
+		assemblylines.add(new AssemblyLine(this, getColor(i), getMaterial(j)));
+            }
+	}
+	assemblylines.parallelStream().forEach(line ->line.buildCar());
+    }
+    
     public PaintColor getColor(int number) {
 
         PaintColor pc = null;
