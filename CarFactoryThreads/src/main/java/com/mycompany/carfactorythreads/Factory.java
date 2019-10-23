@@ -42,18 +42,36 @@ class AssemblyLine {
 
 	}
 
-	public void buildCar() {
+    public void buildCar() {
 
-
-	}
+        Car c = new Car(availablePaintColor, availableInterior);
+        this.factory.updateInventory(c);
+        this.factory.updateFinishedCars();  
+    }
 
 }
 public class Factory {
     
     int finishedCars = 0;
-    
+    ArrayList<Car> inventory = new ArrayList<Car>(50);
+    ArrayList<AssemblyLine> assemblylines = new ArrayList<AssemblyLine>();
+    private Object finishedCarsLock = new Object();
+    private Object inventoryLock = new Object();
     public static void main(String[] args) {
         
+    }
+    public void updateFinishedCars() {
+
+	synchronized (finishedCarsLock) {
+            finishedCars++;
+	}
+    }
+	
+    public void updateInventory(Car c) {
+
+        synchronized (inventoryLock) {
+            inventory.add(c);
+	}
     }
     
     public PaintColor getColor(int number) {
