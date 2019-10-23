@@ -53,11 +53,12 @@ public class FactoryTest {
     @Test
     public void testUpdateInventory() {
         System.out.println("updateInventory");
-        Car c = null;
+        Car c = new Car(PaintColor.BLACK, InteriorMaterial.SUEDE);
         Factory instance = new Factory(1);
         instance.updateInventory(c);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Car resultCar = instance.inventory.get(0);
+        assertEquals(PaintColor.BLACK, resultCar.getPaint());
+        assertEquals(InteriorMaterial.SUEDE, resultCar.getInterior());
     }
 
     /**
