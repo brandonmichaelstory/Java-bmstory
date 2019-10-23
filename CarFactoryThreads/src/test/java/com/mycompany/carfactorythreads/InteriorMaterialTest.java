@@ -12,25 +12,22 @@ import static org.junit.Assert.*;
  *
  * @author micha
  */
-public class PaintColorTest {
+public class InteriorMaterialTest {
     
-    public PaintColorTest() {
+    public InteriorMaterialTest() {
     }
     
     /**
-     * Test of values method, of class PaintColor.
+     * Test of values method, of class InteriorMaterial.
      */
     @Test
     public void testValues() {
         System.out.println("values");
-        PaintColor r = PaintColor.RED;
-        PaintColor b = PaintColor.BLACK;
-        PaintColor w = PaintColor.WHITE;
-        
-        assertEquals(r, PaintColor.RED);
-        assertEquals(b, PaintColor.BLACK);
-        assertEquals(w, PaintColor.WHITE);
-       
+        InteriorMaterial l = InteriorMaterial.LEATHER;
+        InteriorMaterial s = InteriorMaterial.SUEDE;
+        InteriorMaterial v = InteriorMaterial.VINYL;
+        assertEquals(l, InteriorMaterial.LEATHER);
+        assertEquals(s, InteriorMaterial.SUEDE);
+        assertEquals(v, InteriorMaterial.VINYL);
     }
-    
 }
