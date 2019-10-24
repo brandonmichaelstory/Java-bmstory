@@ -1,5 +1,7 @@
 Screenshots of all tests passing
 
+![FactoryTests.png](FactoryTests.pn)
+
 ![AssemblyLineTest.png](AssemblyLineTest.png)
 
 ![CarTest.png](CarTest.png)
@@ -7,3 +9,4 @@ Screenshots of all tests passing
 ![InteriorMaterialTest.png](InteriorMaterialTest.png)
 
 ![PaintColorTest.png](PaintColorTest.png)
+
