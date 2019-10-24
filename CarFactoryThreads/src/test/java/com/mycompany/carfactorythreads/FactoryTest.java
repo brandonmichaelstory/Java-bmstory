@@ -67,10 +67,13 @@ public class FactoryTest {
     @Test
     public void testProduction() {
         System.out.println("production");
-        Factory instance = new Factory(1);
+        int numberOfCars = 200;
+        Factory instance = new Factory(numberOfCars);
         instance.production();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int numberOfThreads = 9;
+        assertEquals(numberOfThreads, instance.assemblylines.size());
+        assertEquals(numberOfCars, instance.getFinishedCars());
+        assertEquals(numberOfCars, instance.inventory.size());
     }
 
     /**
