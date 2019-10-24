@@ -1,6 +1,6 @@
 Screenshots of all tests passing
 
-![FactoryTests.png](FactoryTests.pn)
+![FactoryTests.png](FactoryTests.png)
 
 ![AssemblyLineTest.png](AssemblyLineTest.png)
 
