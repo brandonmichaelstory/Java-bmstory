@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -43,4 +44,16 @@ public class AlbumsDatabase {
         }
     }
      
+     public void createNewTable(String tableName) {
+       String sql = "CREATE TABLE IF NOT EXISTS " + tableName + " (\n"
+                + "	AlbumName text PRIMARY KEY NOT NULL,\n"
+                + "	Year integer NOT NULL\n"
+                + ");";
+        try (Connection conn = connect();
+                Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
