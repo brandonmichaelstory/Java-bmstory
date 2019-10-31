@@ -95,11 +95,25 @@ public class AlbumsDatabaseTest {
     @Test
     public void testInsert() {
         System.out.println("insert");
-        String tableName = "";
-        String AlbumName = "";
-        int year = 0;
+        String tableName = "StevieWonderAlbums";
+        String AlbumName = "Hotter Than July";
+        int year = 1980;
         AlbumsDatabase instance = new AlbumsDatabase();
         instance.insert(tableName, AlbumName, year);
+         try (Connection connection = DriverManager.getConnection(instance.DEFAULT_URL)){
+            DatabaseMetaData dbm = connection.getMetaData();
+           //ResultSet resultSet = dbm.getTables(null, null, tableName, null);
+           ResultSet resultSet = dbm.getPrimaryKeys(null, null, tableName);
+          // dbm.g
+           //resultSet.next();
+           String tableNameResult = resultSet.getString(6);
+           System.out.println(tableNameResult);
+           //assertEquals(null, tableNameResult);
+        
+        }
+        catch (SQLException e) {
+            System.out.println(e.toString());
+        }
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
