@@ -56,4 +56,16 @@ public class AlbumsDatabase {
             System.out.println(e.getMessage());
         }
     }
+     
+      public void deleteTable(String tableName) {
+        String sql = "DROP TABLE IF EXISTS ";
+        sql += tableName +";";
+        try (Connection conn = connect();
+                        Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
