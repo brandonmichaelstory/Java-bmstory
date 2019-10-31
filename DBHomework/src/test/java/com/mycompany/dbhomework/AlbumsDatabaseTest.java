@@ -63,8 +63,6 @@ public class AlbumsDatabaseTest {
         catch (SQLException e) {
             System.out.println(e.toString());
         }
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -73,11 +71,22 @@ public class AlbumsDatabaseTest {
     @Test
     public void testDeleteTable() {
         System.out.println("deleteTable");
-        String tableName = "";
+        String tableName = "StevieWonderAlbums";
         AlbumsDatabase instance = new AlbumsDatabase();
         instance.deleteTable(tableName);
+        try (Connection connection = DriverManager.getConnection(instance.DEFAULT_URL)){
+            DatabaseMetaData dbm = connection.getMetaData();
+           ResultSet resultSet = dbm.getTables(null, null, tableName, null);
+           //resultSet.next();
+           String tableNameResult = resultSet.getString(0);
+           assertEquals(null, tableNameResult);
+        
+        }
+        catch (SQLException e) {
+            System.out.println(e.toString());
+        }
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
