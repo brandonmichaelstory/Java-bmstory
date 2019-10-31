@@ -23,6 +23,11 @@ public class AlbumsDatabase {
 
     public static void main(String[] args) {
         
+        AlbumsDatabase ad = new AlbumsDatabase();
+        ad.createNewDatabase();
+        String tableName = "HueyLewisAlbums";
+        ad.createNewTable(tableName);
+        ad.insert(tableName, "Sports", 1983);
     }
     
     private Connection connect() {
