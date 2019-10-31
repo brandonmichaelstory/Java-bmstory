@@ -18,7 +18,7 @@ import java.sql.Statement;
  */
 public class AlbumsDatabase {
     
-    public static String DEFAULT_DB = "testAlbums.db";
+    public static String DEFAULT_DB = "albums.db";
     public static String DEFAULT_URL = "jdbc:sqlite:" + DEFAULT_DB;
 
     public static void main(String[] args) {
