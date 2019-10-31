@@ -8,6 +8,7 @@ package com.mycompany.dbhomework;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -20,6 +21,10 @@ public class AlbumsDatabase {
     public static String DEFAULT_DB = "testAlbums.db";
     public static String DEFAULT_URL = "jdbc:sqlite:" + DEFAULT_DB;
 
+    public static void main(String[] args) {
+        
+    }
+    
     private Connection connect() {
         Connection conn = null;
         try {
@@ -65,6 +70,18 @@ public class AlbumsDatabase {
             stmt.execute(sql);
         }
         catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void insert(String tableName, String AlbumName, int year) {
+        String sql = "INSERT INTO " + tableName + " (AlbumName, Year) VALUES (?,?)";
+
+        try (Connection conn = this.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, AlbumName);
+            pstmt.setInt(2, year);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
