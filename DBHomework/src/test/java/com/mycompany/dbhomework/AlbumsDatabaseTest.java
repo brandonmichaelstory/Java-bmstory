@@ -55,7 +55,6 @@ public class AlbumsDatabaseTest {
         try (Connection connection = DriverManager.getConnection(instance.DEFAULT_URL)){
             DatabaseMetaData dbm = connection.getMetaData();
            ResultSet resultSet = dbm.getTables(null, null, tableName, null);
-           //resultSet.next();
            String tableNameResult = resultSet.getString(0);
            assertEquals(tableName, tableNameResult);
         
@@ -77,7 +76,6 @@ public class AlbumsDatabaseTest {
         try (Connection connection = DriverManager.getConnection(instance.DEFAULT_URL)){
             DatabaseMetaData dbm = connection.getMetaData();
            ResultSet resultSet = dbm.getTables(null, null, tableName, null);
-           //resultSet.next();
            String tableNameResult = resultSet.getString(0);
            assertEquals(null, tableNameResult);
         
@@ -85,8 +83,6 @@ public class AlbumsDatabaseTest {
         catch (SQLException e) {
             System.out.println(e.toString());
         }
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -102,20 +98,13 @@ public class AlbumsDatabaseTest {
         instance.insert(tableName, AlbumName, year);
          try (Connection connection = DriverManager.getConnection(instance.DEFAULT_URL)){
             DatabaseMetaData dbm = connection.getMetaData();
-           //ResultSet resultSet = dbm.getTables(null, null, tableName, null);
-           ResultSet resultSet = dbm.getPrimaryKeys(null, null, tableName);
-          // dbm.g
-           //resultSet.next();
-           String tableNameResult = resultSet.getString(6);
-           System.out.println(tableNameResult);
-           //assertEquals(null, tableNameResult);
+           ResultSet resultSet = dbm.getColumns(null, null, tableName, null);
+           assertEquals("AlbumName", resultSet.getString("COLUMN_NAME"));
         
         }
         catch (SQLException e) {
             System.out.println(e.toString());
         }
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
