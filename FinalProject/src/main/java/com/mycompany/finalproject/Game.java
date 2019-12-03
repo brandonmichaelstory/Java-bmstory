@@ -110,9 +110,52 @@ class Deck {
         return c;
     }
 }
+
+class Player {
+    
+    ArrayList<Card> hand = new ArrayList<>();
+    private int total = 0;
+    public Player(Card c1, Card c2) {
+        
+        hand.add(c1);
+        hand.add(c2);
+        this.total = hand.get(0).getValue() + hand.get(1).getValue();
+    }
+    
+    public int getTotal() {
+        return this.total;
+    }
+    
+    public void updateTotal(Card c) {
+        this.total += c.getValue();
+    }
+    
+    public void draw(Card c) {
+        
+        updateTotal(c);
+        hand.add(c);
+    }
+    @Override
+    public String toString() {
+        
+        StringBuilder s = new StringBuilder();
+        
+        for (var c : hand) {
+            
+            s.append(c.toString());
+            s.append(" ");
+        }
+        
+        return s.toString();
+    }
+}
 public class Game {
     
     public static void main(String[] args) {
         
+        Card c1 = new Card(1, Suit.DIAMONDS);
+        Card c2 = new Card(4, Suit.DIAMONDS);
+        Player player = new Player(c1, c2);
+        System.out.println(player.toString());
     }
 }
