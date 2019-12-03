@@ -8,6 +8,8 @@ package com.mycompany.finalproject;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -158,13 +160,18 @@ class Player {
     }
 }
 
-class BlackjackFrame extends JFrame {
+class BlackjackFrame extends JFrame implements ActionListener{
     
+    private Player dealer, player;
+    private Deck deck;
     private JPanel playerLabels, buttons;
     private JLabel dealerLabel, playerLabel;
     private JButton hitButton, stayButton;
     //Player dealer, player;
     public BlackjackFrame(String title) {
+        deck = new Deck();
+        dealer = new Player(deck.hit(), deck.hit());
+        player = new Player(deck.hit(), deck.hit());
         
         this.setTitle(title);
         this.setSize(500, 500);
@@ -172,7 +179,7 @@ class BlackjackFrame extends JFrame {
         
         //Initialize top labels in frame
         dealerLabel = new JLabel("Dealer: ??", JLabel.CENTER);
-        playerLabel = new JLabel("Player: ", JLabel.CENTER);
+        playerLabel = new JLabel("Player: " + player.getTotal(), JLabel.CENTER);
         playerLabels = new JPanel(new GridLayout(1, 2));
         playerLabels.add(dealerLabel);
         playerLabels.add(playerLabel);
@@ -181,6 +188,7 @@ class BlackjackFrame extends JFrame {
         //Initialize buttons at bottom of frame
         buttons = new JPanel(new FlowLayout());
         hitButton = new JButton("HIT");
+        hitButton.addActionListener(this);
         stayButton = new JButton("STAY");
         buttons.add(hitButton);
         buttons.add(stayButton);
@@ -194,11 +202,24 @@ class BlackjackFrame extends JFrame {
         
         this.dispose();
     }
+
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        
+       if (event.getSource() == hitButton) {
+                player.draw(deck.hit());
+                playerLabel.setText("Player: " + player.getTotal());
+                playerLabel.revalidate();
+                playerLabels.revalidate();
+                //addCardToScreen();
+            }
+
+    }
 }
 public class Game {
+
     
     public static void main(String[] args) {
-        
        // Card c1 = new Card(1, Suit.DIAMONDS);
        // Card c2 = new Card(4, Suit.DIAMONDS);
        // Player player = new Player(c1, c2);
