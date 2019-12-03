@@ -7,6 +7,8 @@ package com.mycompany.finalproject;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
+import javax.swing.JFrame;
 
 /**
  *
@@ -149,13 +151,36 @@ class Player {
         return s.toString();
     }
 }
+
+class BlackjackFrame extends JFrame {
+    
+    public BlackjackFrame(String title) {
+        
+        this.setTitle(title);
+        this.setSize(500, 500);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        this.setVisible(true);
+    }
+    
+    public void closeWindow() {
+        
+        this.dispose();
+    }
+}
 public class Game {
     
     public static void main(String[] args) {
         
-        Card c1 = new Card(1, Suit.DIAMONDS);
-        Card c2 = new Card(4, Suit.DIAMONDS);
-        Player player = new Player(c1, c2);
-        System.out.println(player.toString());
+       // Card c1 = new Card(1, Suit.DIAMONDS);
+       // Card c2 = new Card(4, Suit.DIAMONDS);
+       // Player player = new Player(c1, c2);
+       // System.out.println(player.toString());
+       while (true) {
+        BlackjackFrame blackjack = new BlackjackFrame("Blackjack");
+        Scanner s = new Scanner(System.in);
+        s.nextInt();
+        blackjack.closeWindow();
+       }
     }
 }
