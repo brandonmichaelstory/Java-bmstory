@@ -5,10 +5,15 @@
  */
 package com.mycompany.finalproject;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -154,11 +159,23 @@ class Player {
 
 class BlackjackFrame extends JFrame {
     
+    private JPanel playerLabels;
+    private JLabel dealerLabel, playerLabel;
+    //Player dealer, player;
     public BlackjackFrame(String title) {
         
         this.setTitle(title);
         this.setSize(500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        //Initialize top labels in frame
+        dealerLabel = new JLabel("Dealer: ??", JLabel.CENTER);
+        playerLabel = new JLabel("Player: ", JLabel.CENTER);
+        playerLabels = new JPanel(new GridLayout(1, 2));
+        playerLabels.add(dealerLabel);
+        playerLabels.add(playerLabel);
+        this.add(playerLabels, BorderLayout.NORTH);
+        
         
         this.setVisible(true);
     }
