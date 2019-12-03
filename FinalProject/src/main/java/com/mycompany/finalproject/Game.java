@@ -11,6 +11,7 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -159,8 +160,9 @@ class Player {
 
 class BlackjackFrame extends JFrame {
     
-    private JPanel playerLabels;
+    private JPanel playerLabels, buttons;
     private JLabel dealerLabel, playerLabel;
+    private JButton hitButton, stayButton;
     //Player dealer, player;
     public BlackjackFrame(String title) {
         
@@ -175,6 +177,14 @@ class BlackjackFrame extends JFrame {
         playerLabels.add(dealerLabel);
         playerLabels.add(playerLabel);
         this.add(playerLabels, BorderLayout.NORTH);
+        
+        //Initialize buttons at bottom of frame
+        buttons = new JPanel(new FlowLayout());
+        hitButton = new JButton("HIT");
+        stayButton = new JButton("STAY");
+        buttons.add(hitButton);
+        buttons.add(stayButton);
+        this.add(buttons, BorderLayout.SOUTH);
         
         
         this.setVisible(true);
