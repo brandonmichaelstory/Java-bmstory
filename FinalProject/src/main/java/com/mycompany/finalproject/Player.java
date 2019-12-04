@@ -27,7 +27,8 @@ public class Player {
         }
         hand.add(c1);
         hand.add(c2);
-        this.total = hand.get(0).getValue() + hand.get(1).getValue();
+        updateTotal(c1);
+        updateTotal(c2);
     }
     
     public int getTotal() {
