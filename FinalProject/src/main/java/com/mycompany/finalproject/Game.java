@@ -30,8 +30,15 @@ class BlackjackFrame extends JFrame implements ActionListener{
     private JPanel playerLabels, buttons, cardPanel, dealerCards, playerCards;
     private JLabel dealerLabel, playerLabel;
     private JButton hitButton, stayButton;
+    
+    String title;
     //Player dealer, player;
     public BlackjackFrame(String title) {
+        this.title = title;
+        windowInitialSettings();
+    }
+    
+    public void windowInitialSettings() {
         deck = new Deck();
         dealer = new Player(deck.hit(), deck.hit());
         player = new Player(deck.hit(), deck.hit());
@@ -71,6 +78,33 @@ class BlackjackFrame extends JFrame implements ActionListener{
         this.setVisible(true);
     }
     
+    public void resetWindow() {
+        this.setVisible(false);
+        deck = new Deck();
+        dealer = new Player(deck.hit(), deck.hit());
+        player = new Player(deck.hit(), deck.hit());
+   
+        dealerLabel.setText("Dealer: ??"); 
+        playerLabel.setText("Player: " + player.getTotal());
+        dealerLabel.revalidate();
+        playerLabel.revalidate();
+        playerLabels.removeAll();
+        playerLabels.add(dealerLabel);
+        playerLabels.add(playerLabel);
+        playerLabels.revalidate();
+        this.add(playerLabels, BorderLayout.NORTH);
+    
+        cardPanel.removeAll();
+        dealerCards.removeAll();
+        playerCards.removeAll();
+        showStartingHands();
+        cardPanel.add(dealerCards);
+        cardPanel.add(playerCards);
+        cardPanel.revalidate();
+        
+        this.revalidate();
+        this.setVisible(true);
+    }
     public void closeWindow() {
         
         this.dispose();
@@ -81,10 +115,26 @@ class BlackjackFrame extends JFrame implements ActionListener{
         
        if (event.getSource() == hitButton) {
             
+           
            addCardToScreen();
             if (player.getTotal() > 21) {
-                JOptionPane.showMessageDialog(this, "You went over 21! YOU LOSE!");
-                this.closeWindow();
+                String[] options = {"YES", "NO"};
+                //JOptionPane.showMessageDialog(this, "You went over 21! YOU LOSE!");
+                ///this.closeWindow();
+                int x = JOptionPane.showOptionDialog(null, "Would you like to play again?",
+                "YOU LOST!",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                if (x == 0) {
+                    this.resetWindow();
+                    //this.setVisible(false);
+                    //this.windowInitialSettings();
+                }
+                else {
+                    this.closeWindow();
+                }
+                //this.closeWindow();
+                //this.removeAll();
+                //this.windowInitialSettings();
                 }
             
        }
@@ -94,6 +144,7 @@ class BlackjackFrame extends JFrame implements ActionListener{
            if (dealer.getTotal() > 21) {
                JOptionPane.showMessageDialog(this, "The dealer went over 21! YOU WIN!");
                this.closeWindow();
+               //this.windowInitialSettings();
            }
            else if (dealer.getTotal() > player.getTotal()) {
                JOptionPane.showMessageDialog(this, "The dealer was closer to 21! YOU LOSE!");
