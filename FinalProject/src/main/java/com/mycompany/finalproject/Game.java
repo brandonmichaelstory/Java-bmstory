@@ -10,9 +10,16 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -77,16 +84,16 @@ class Card {
         s.append(this.cardName);
         switch (suit) {
             case DIAMONDS:
-                s.append("D");
+                s.append("H");
                 break;
             case CLUBS:
-                s.append("C");
+                s.append("H");
                 break;
             case HEARTS:
                 s.append("H");
                 break;
             case SPADES:
-                s.append("S");
+                s.append("H");
                 break;
             }
         return s.toString();
@@ -165,7 +172,7 @@ class BlackjackFrame extends JFrame implements ActionListener{
     
     private Player dealer, player;
     private Deck deck;
-    private JPanel playerLabels, buttons;
+    private JPanel playerLabels, buttons, cardPanel, dealerCards, playerCards;
     private JLabel dealerLabel, playerLabel;
     private JButton hitButton, stayButton;
     //Player dealer, player;
@@ -196,6 +203,14 @@ class BlackjackFrame extends JFrame implements ActionListener{
         buttons.add(stayButton);
         this.add(buttons, BorderLayout.SOUTH);
         
+        // Initialize panels for cards
+        cardPanel = new JPanel(new GridLayout(1, 2));
+        dealerCards = new JPanel(new GridLayout(3, 4));
+        playerCards = new JPanel(new GridLayout(3, 4));
+        showStartingHands();
+        cardPanel.add(dealerCards);
+        cardPanel.add(playerCards);
+        this.add(cardPanel, BorderLayout.CENTER);
         
         this.setVisible(true);
     }
@@ -234,7 +249,29 @@ class BlackjackFrame extends JFrame implements ActionListener{
                this.closeWindow();
            }
        }
-
+    }
+    
+    public void showStartingHands() {
+        
+        BufferedImage myPicture;
+        Card pc1 = this.player.hand.get(0);
+        Card pc2 = this.player.hand.get(1);
+        Card dc1 = this.dealer.hand.get(0);
+        try {
+            myPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" + pc1.toString() + "Small.PNG"));
+            this.playerCards.add(new JLabel(new ImageIcon(myPicture)));
+            myPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" + pc2.toString() + "Small.PNG"));
+            this.playerCards.add(new JLabel(new ImageIcon(myPicture)));
+            this.playerCards.revalidate();
+            myPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" + dc1.toString() + "Small.PNG"));
+            this.dealerCards.add(new JLabel(new ImageIcon(myPicture)));
+            myPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\Unknown.PNG"));
+            this.dealerCards.add(new JLabel(new ImageIcon(myPicture)));
+            this.dealerCards.revalidate();
+            this.cardPanel.revalidate();
+        } catch (IOException ex) {
+            Logger.getLogger(BlackjackFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }  
     }
 }
 public class Game {
