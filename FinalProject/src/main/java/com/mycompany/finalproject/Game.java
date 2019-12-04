@@ -184,6 +184,7 @@ class BlackjackFrame extends JFrame implements ActionListener{
         this.setTitle(title);
         this.setSize(500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
         
         //Initialize top labels in frame
         dealerLabel = new JLabel("Dealer: ??", JLabel.CENTER);
@@ -227,21 +228,28 @@ class BlackjackFrame extends JFrame implements ActionListener{
             
            addCardToScreen();
             if (player.getTotal() > 21) {
-                JOptionPane.showMessageDialog(this, "You went over 21!");
+                JOptionPane.showMessageDialog(this, "You went over 21! YOU LOSE!");
                 this.closeWindow();
                 }
             
        }
        else if(event.getSource() == stayButton) {
            
-           while (dealer.getTotal() < 17) {
-               dealer.draw(deck.hit());
-           }
-           dealerLabel.setText("Dealer: " + dealer.getTotal());
-           dealerLabel.revalidate();
-           playerLabels.revalidate();
+           dealerTurn();
            if (dealer.getTotal() > 21) {
-               JOptionPane.showMessageDialog(this, "The dealer went over 21!");
+               JOptionPane.showMessageDialog(this, "The dealer went over 21! YOU WIN!");
+               this.closeWindow();
+           }
+           else if (dealer.getTotal() > player.getTotal()) {
+               JOptionPane.showMessageDialog(this, "The dealer was closer to 21! YOU LOSE!");
+               this.closeWindow();
+           }
+           else if (dealer.getTotal() < player.getTotal()) {
+               JOptionPane.showMessageDialog(this, "You were closer to 21! YOU WIN!");
+               this.closeWindow();
+           }
+           else if (dealer.getTotal() == player.getTotal()) {
+               JOptionPane.showMessageDialog(this, "You and the dealer tied!");
                this.closeWindow();
            }
        }
@@ -284,6 +292,27 @@ class BlackjackFrame extends JFrame implements ActionListener{
         catch (Exception e) {
             System.out.println(e.toString());
         }
+    }
+    
+    public void dealerTurn() {
+        
+        while (dealer.getTotal() < 17) {
+            dealer.draw(deck.hit());
+        }
+        dealerCards.removeAll();
+        for (var c : dealer.hand) {
+            BufferedImage cardPicture;
+            try {
+                cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" + c.toString() + "Small.PNG"));
+                dealerCards.add(new JLabel(new ImageIcon(cardPicture)));
+            } catch (IOException ex) {
+                Logger.getLogger(BlackjackFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        dealerLabel.setText("DEALER: " + dealer.getTotal());
+        dealerLabel.revalidate();
+        dealerCards.revalidate();
+        cardPanel.revalidate();
     }
 }
 public class Game {
