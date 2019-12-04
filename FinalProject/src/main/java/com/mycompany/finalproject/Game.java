@@ -224,17 +224,14 @@ class BlackjackFrame extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent event) {
         
        if (event.getSource() == hitButton) {
-                player.draw(deck.hit());
-                playerLabel.setText("Player: " + player.getTotal());
-                playerLabel.revalidate();
-                playerLabels.revalidate();
-                if (player.getTotal() > 21) {
-                    JOptionPane.showMessageDialog(this,
-                "You went over 21!");
-                    this.closeWindow();
+            
+           addCardToScreen();
+            if (player.getTotal() > 21) {
+                JOptionPane.showMessageDialog(this, "You went over 21!");
+                this.closeWindow();
                 }
-                //addCardToScreen();
-            }
+            
+       }
        else if(event.getSource() == stayButton) {
            
            while (dealer.getTotal() < 17) {
@@ -244,8 +241,7 @@ class BlackjackFrame extends JFrame implements ActionListener{
            dealerLabel.revalidate();
            playerLabels.revalidate();
            if (dealer.getTotal() > 21) {
-               JOptionPane.showMessageDialog(this,
-                "The dealer went over 21!");
+               JOptionPane.showMessageDialog(this, "The dealer went over 21!");
                this.closeWindow();
            }
        }
@@ -253,25 +249,41 @@ class BlackjackFrame extends JFrame implements ActionListener{
     
     public void showStartingHands() {
         
-        BufferedImage myPicture;
+        BufferedImage cardPicture;
         Card pc1 = this.player.hand.get(0);
         Card pc2 = this.player.hand.get(1);
         Card dc1 = this.dealer.hand.get(0);
         try {
-            myPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" + pc1.toString() + "Small.PNG"));
-            this.playerCards.add(new JLabel(new ImageIcon(myPicture)));
-            myPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" + pc2.toString() + "Small.PNG"));
-            this.playerCards.add(new JLabel(new ImageIcon(myPicture)));
-            this.playerCards.revalidate();
-            myPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" + dc1.toString() + "Small.PNG"));
-            this.dealerCards.add(new JLabel(new ImageIcon(myPicture)));
-            myPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\Unknown.PNG"));
-            this.dealerCards.add(new JLabel(new ImageIcon(myPicture)));
-            this.dealerCards.revalidate();
-            this.cardPanel.revalidate();
+            cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" + pc1.toString() + "Small.PNG"));
+            playerCards.add(new JLabel(new ImageIcon(cardPicture)));
+            cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" + pc2.toString() + "Small.PNG"));
+            playerCards.add(new JLabel(new ImageIcon(cardPicture)));
+            playerCards.revalidate();
+            cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" + dc1.toString() + "Small.PNG"));
+            dealerCards.add(new JLabel(new ImageIcon(cardPicture)));
+            cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\Unknown.PNG"));
+            dealerCards.add(new JLabel(new ImageIcon(cardPicture)));
+            dealerCards.revalidate();
+            cardPanel.revalidate();
         } catch (IOException ex) {
             Logger.getLogger(BlackjackFrame.class.getName()).log(Level.SEVERE, null, ex);
         }  
+    }
+    
+    public void addCardToScreen() {
+        player.draw(deck.hit());
+        Card c = player.hand.get(player.hand.size()- 1);
+        playerLabel.setText("Player: " + player.getTotal());
+        playerLabel.revalidate();
+        playerLabels.revalidate();
+        BufferedImage cardPicture;
+        try {
+            cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" +c.toString() + "Small.PNG"));
+            playerCards.add(new JLabel(new ImageIcon(cardPicture)));
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 }
 public class Game {
