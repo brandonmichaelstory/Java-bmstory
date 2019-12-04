@@ -21,3 +21,4 @@
 | 3 - Collection Homework | 17-Oct-19 | ☑ | [HERE](https://github.com/brandonmichaelstory/Java-bmstory/tree/master/CollectionHomework) | made an applicaction that uses a Hashmap to store food and nutritional facts about them |
 | 4 - Thread Homework | 24-Oct-19 | ☑ | [HERE](https://github.com/brandonmichaelstory/Java-bmstory/tree/master/CarFactoryThreads) | this is an application that uses threads to create a given number of cars |
 | 5 - Database Homework | 31-Oct-19 | ☑ | [HERE](https://github.com/brandonmichaelstory/Java-bmstory/tree/master/DBHomework) | Made a toy database, created tables, inserted, deleted tables, etc. |
+| 6 - Final Project | 4-Dec-19 | ☑ | [HERE](https://github.com/brandonmichaelstory/Java-bmstory/tree/master/FinalProject) | created a gui version of blackjack using swing |
