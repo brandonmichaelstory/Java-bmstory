@@ -16,6 +16,7 @@ import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -190,6 +191,7 @@ class BlackjackFrame extends JFrame implements ActionListener{
         hitButton = new JButton("HIT");
         hitButton.addActionListener(this);
         stayButton = new JButton("STAY");
+        stayButton.addActionListener(this);
         buttons.add(hitButton);
         buttons.add(stayButton);
         this.add(buttons, BorderLayout.SOUTH);
@@ -211,8 +213,27 @@ class BlackjackFrame extends JFrame implements ActionListener{
                 playerLabel.setText("Player: " + player.getTotal());
                 playerLabel.revalidate();
                 playerLabels.revalidate();
+                if (player.getTotal() > 21) {
+                    JOptionPane.showMessageDialog(this,
+                "You went over 21!");
+                    this.closeWindow();
+                }
                 //addCardToScreen();
             }
+       else if(event.getSource() == stayButton) {
+           
+           while (dealer.getTotal() < 17) {
+               dealer.draw(deck.hit());
+           }
+           dealerLabel.setText("Dealer: " + dealer.getTotal());
+           dealerLabel.revalidate();
+           playerLabels.revalidate();
+           if (dealer.getTotal() > 21) {
+               JOptionPane.showMessageDialog(this,
+                "The dealer went over 21!");
+               this.closeWindow();
+           }
+       }
 
     }
 }
@@ -220,15 +241,7 @@ public class Game {
 
     
     public static void main(String[] args) {
-       // Card c1 = new Card(1, Suit.DIAMONDS);
-       // Card c2 = new Card(4, Suit.DIAMONDS);
-       // Player player = new Player(c1, c2);
-       // System.out.println(player.toString());
-       while (true) {
-        BlackjackFrame blackjack = new BlackjackFrame("Blackjack");
-        Scanner s = new Scanner(System.in);
-        s.nextInt();
-        blackjack.closeWindow();
-       }
+      BlackjackFrame blackjack = new BlackjackFrame("Blackjack");
     }
+    
 }
