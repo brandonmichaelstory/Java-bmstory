@@ -212,10 +212,6 @@ class BlackjackFrame extends JFrame implements ActionListener{
                 Logger.getLogger(BlackjackFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        //dealerLabel.setText("DEALER: " + dealer.getTotal());
-        //dealerLabel.revalidate();
-        //dealerCards.revalidate();
-        //cardPanel.revalidate();
     }
 }
 public class Game {
