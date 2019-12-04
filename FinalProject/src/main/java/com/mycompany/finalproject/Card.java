@@ -43,14 +43,20 @@ public class Card {
     
     public int setValue(int cardIndex) {
         
-        if (cardIndex <= 9) {
+        if (cardIndex > 1 && cardIndex <= 9) {
             return cardIndex;
+        }
+        else if (cardIndex == 1) {
+            return 11;
         }
         else {
             return 10;
         }
     }
     
+    public String getCardName() {
+        return this.cardName;
+    }
     @Override
     public String toString() {
         

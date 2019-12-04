@@ -203,14 +203,19 @@ class BlackjackFrame extends JFrame implements ActionListener{
             try {
                 cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" + c.toString() + "Small.PNG"));
                 dealerCards.add(new JLabel(new ImageIcon(cardPicture)));
-            } catch (IOException ex) {
+                dealerLabel.setText("DEALER: " + dealer.getTotal());
+                dealerLabel.revalidate();
+                dealerCards.revalidate();
+                cardPanel.revalidate();
+                java.util.concurrent.TimeUnit.MILLISECONDS.sleep(10);
+            } catch (Exception ex) {
                 Logger.getLogger(BlackjackFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        dealerLabel.setText("DEALER: " + dealer.getTotal());
-        dealerLabel.revalidate();
-        dealerCards.revalidate();
-        cardPanel.revalidate();
+        //dealerLabel.setText("DEALER: " + dealer.getTotal());
+        //dealerLabel.revalidate();
+        //dealerCards.revalidate();
+        //cardPanel.revalidate();
     }
 }
 public class Game {

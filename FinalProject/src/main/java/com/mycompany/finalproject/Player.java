@@ -15,8 +15,16 @@ public class Player {
     
     ArrayList<Card> hand = new ArrayList<>();
     private int total = 0;
+    //private boolean hasAce = false;
+    private int aceCount = 0;
     public Player(Card c1, Card c2) {
         
+        if (c1.getCardName().equals("A")) {
+            aceCount++;
+        }
+        if (c2.getCardName().equals("A")) {
+            aceCount++;
+        }
         hand.add(c1);
         hand.add(c2);
         this.total = hand.get(0).getValue() + hand.get(1).getValue();
@@ -27,13 +35,20 @@ public class Player {
     }
     
     public void updateTotal(Card c) {
-        this.total += c.getValue();
+        total += c.getValue();
+        if (total > 21 && aceCount > 0) {
+            this.total -= 10;
+            aceCount--;
+        }
     }
     
     public void draw(Card c) {
         
-        updateTotal(c);
+        if (c.getCardName().equals("A")) {
+            aceCount++;
+        }
         hand.add(c);
+        updateTotal(c);
     }
     @Override
     public String toString() {
