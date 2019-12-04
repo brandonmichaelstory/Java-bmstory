@@ -73,7 +73,7 @@ public class Card {
                 s.append("H");
                 break;
             case SPADES:
-                s.append("H");
+                s.append("S");
                 break;
             }
         return s.toString();
