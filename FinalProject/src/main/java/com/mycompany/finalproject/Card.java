@@ -17,7 +17,7 @@ public class Card {
     public Card(int cardIndex, Suit suit) {
         
         this.value = setValue(cardIndex); // card index being the number to represent the card ex. Ace index = 1
-        this.cardName = getName(cardIndex);
+        this.cardName = createName(cardIndex);
         this.suit = suit;
     }
     
@@ -25,7 +25,7 @@ public class Card {
         return value;
     }
     
-    public String getName(int cardIndex) {
+    public String createName(int cardIndex) {
         
         switch (cardIndex) {
             case 1:
