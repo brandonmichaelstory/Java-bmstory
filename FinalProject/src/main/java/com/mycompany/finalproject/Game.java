@@ -110,6 +110,18 @@ class BlackjackFrame extends JFrame implements ActionListener{
         this.dispose();
     }
 
+    public void playAgain(String text) {
+        String[] options = {"YES", "NO"};
+       int answer = JOptionPane.showOptionDialog(null, "Would you like to play again?", text,
+       JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+       if (answer == 0) {
+            this.resetWindow();
+        }
+        else {
+            this.closeWindow();
+        }
+    }
+    
     @Override
     public void actionPerformed(ActionEvent event) {
         
@@ -117,46 +129,26 @@ class BlackjackFrame extends JFrame implements ActionListener{
             
            
            addCardToScreen();
-            if (player.getTotal() > 21) {
-                String[] options = {"YES", "NO"};
-                //JOptionPane.showMessageDialog(this, "You went over 21! YOU LOSE!");
-                ///this.closeWindow();
-                int x = JOptionPane.showOptionDialog(null, "Would you like to play again?",
-                "YOU LOST!",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-                if (x == 0) {
-                    this.resetWindow();
-                    //this.setVisible(false);
-                    //this.windowInitialSettings();
-                }
-                else {
-                    this.closeWindow();
-                }
-                //this.closeWindow();
-                //this.removeAll();
-                //this.windowInitialSettings();
-                }
+           if (player.getTotal() > 21) {
+                playAgain("YOU LOST!");
+           }
             
        }
+       
        else if(event.getSource() == stayButton) {
            
            dealerTurn();
            if (dealer.getTotal() > 21) {
-               JOptionPane.showMessageDialog(this, "The dealer went over 21! YOU WIN!");
-               this.closeWindow();
-               //this.windowInitialSettings();
+               playAgain("YOU WIN!");
            }
            else if (dealer.getTotal() > player.getTotal()) {
-               JOptionPane.showMessageDialog(this, "The dealer was closer to 21! YOU LOSE!");
-               this.closeWindow();
+               playAgain("YOU LOST!");
            }
            else if (dealer.getTotal() < player.getTotal()) {
-               JOptionPane.showMessageDialog(this, "You were closer to 21! YOU WIN!");
-               this.closeWindow();
+               playAgain("YOU WIN!");
            }
            else if (dealer.getTotal() == player.getTotal()) {
-               JOptionPane.showMessageDialog(this, "You and the dealer tied!");
-               this.closeWindow();
+               playAgain("YOU TIED!");
            }
        }
     }
