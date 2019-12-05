@@ -71,6 +71,7 @@ public class PlayerTest {
         Card c2 = new Card(5, Suit.CLUBS);
         Player p1 = new Player(c1, c2);
         Card c3 = new Card(1, Suit.DIAMONDS);
+        p1.draw(c3);
         String expResult = "2H 5C AD";
         assertEquals(expResult, p1.toString());
     }
