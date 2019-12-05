@@ -31,6 +31,9 @@ public class Deck {
         }
     }
     
+    public int getNumberOfCards() {
+        return deck.size();
+    }
     public Card hit() {
         
         int index = rand.nextInt(deck.size());
