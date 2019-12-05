@@ -37,7 +37,7 @@ public class Player {
     
     public void updateTotal(Card c) {
         total += c.getValue();
-        if (total > 21 && aceCount > 0) {
+        while (total > 21 && aceCount > 0) {
             this.total -= 10;
             aceCount--;
         }
