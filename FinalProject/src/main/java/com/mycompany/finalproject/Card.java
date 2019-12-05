@@ -64,10 +64,10 @@ public class Card {
         s.append(this.cardName);
         switch (suit) {
             case DIAMONDS:
-                s.append("H");
+                s.append("D");
                 break;
             case CLUBS:
-                s.append("H");
+                s.append("C");
                 break;
             case HEARTS:
                 s.append("H");
