@@ -16,7 +16,7 @@ public class Player {
     ArrayList<Card> hand = new ArrayList<>();
     private int total = 0;
     //private boolean hasAce = false;
-    private int aceCount = 0;
+    public int aceCount = 0;
     public Player(Card c1, Card c2) {
         
         if (c1.getCardName().equals("A")) {
