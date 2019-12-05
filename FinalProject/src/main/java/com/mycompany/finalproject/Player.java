@@ -61,7 +61,6 @@ public class Player {
             s.append(c.toString());
             s.append(" ");
         }
-        
-        return s.toString();
+        return s.toString().trim();
     }
 }
