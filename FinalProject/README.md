@@ -1,4 +1,6 @@
-Screenshots of all tests passing
+Screenshots of all tests passing and a screenshot of the project running
+
+![projectRunning.PNG](projectRunning.PNG)
 
 ![cardTestPassing.PNG](cardTestPassing.PNG)
 
