@@ -22,12 +22,11 @@ public class PlayerTest {
     @Test
     public void testGetTotal() {
         System.out.println("getTotal");
-        Player instance = null;
-        int expResult = 0;
-        int result = instance.getTotal();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Card c1 = new Card(1, Suit.HEARTS);
+        Card c2 = new Card(11, Suit.CLUBS);
+        Player p1 = new Player(c1, c2);
+        int expResult = 21;
+        assertEquals(expResult, p1.getTotal());
     }
 
     /**
@@ -36,11 +35,13 @@ public class PlayerTest {
     @Test
     public void testUpdateTotal() {
         System.out.println("updateTotal");
-        Card c = null;
-        Player instance = null;
-        instance.updateTotal(c);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Card c1 = new Card(1, Suit.HEARTS);
+        Card c2 = new Card(11, Suit.CLUBS);
+        Player p1 = new Player(c1, c2);
+        Card c3 = new Card(1, Suit.DIAMONDS);
+        p1.draw(c3);
+        int expResult = 12;
+        assertEquals(expResult, p1.getTotal());
     }
 
     /**
@@ -49,11 +50,15 @@ public class PlayerTest {
     @Test
     public void testDraw() {
         System.out.println("draw");
-        Card c = null;
-        Player instance = null;
-        instance.draw(c);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Card c1 = new Card(2, Suit.HEARTS);
+        Card c2 = new Card(5, Suit.CLUBS);
+        Player p1 = new Player(c1, c2);
+        Card c3 = new Card(1, Suit.DIAMONDS);
+        assertEquals(2, p1.hand.size());
+        assertEquals(0, p1.aceCount);
+        p1.draw(c3);
+        assertEquals(3, p1.hand.size());
+        assertEquals(1, p1.aceCount);
     }
 
     /**
@@ -62,12 +67,12 @@ public class PlayerTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        Player instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Card c1 = new Card(2, Suit.HEARTS);
+        Card c2 = new Card(5, Suit.CLUBS);
+        Player p1 = new Player(c1, c2);
+        Card c3 = new Card(1, Suit.DIAMONDS);
+        String expResult = "2H 5C AD";
+        assertEquals(expResult, p1.toString());
     }
     
 }
