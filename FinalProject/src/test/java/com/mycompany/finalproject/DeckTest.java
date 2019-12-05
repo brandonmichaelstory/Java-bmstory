@@ -23,11 +23,10 @@ public class DeckTest {
     public void testHit() {
         System.out.println("hit");
         Deck instance = new Deck();
-        Card expResult = null;
-        Card result = instance.hit();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int numberOfCards = instance.getNumberOfCards();
+        assertEquals(numberOfCards, instance.getNumberOfCards());
+        instance.hit();
+        assertEquals(numberOfCards - 1, instance.getNumberOfCards());
     }
     
 }
