@@ -160,14 +160,14 @@ class BlackjackFrame extends JFrame implements ActionListener{
         Card pc2 = this.player.hand.get(1);
         Card dc1 = this.dealer.hand.get(0);
         try {
-            cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" + pc1.toString() + "Small.PNG"));
+            cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\Java-bmstory\\FinalProject\\BlackjackCards\\" + pc1.toString() + "Small.PNG"));
             playerCards.add(new JLabel(new ImageIcon(cardPicture)));
-            cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" + pc2.toString() + "Small.PNG"));
+            cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\Java-bmstory\\FinalProject\\BlackjackCards\\" + pc2.toString() + "Small.PNG"));
             playerCards.add(new JLabel(new ImageIcon(cardPicture)));
             playerCards.revalidate();
-            cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" + dc1.toString() + "Small.PNG"));
+            cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\Java-bmstory\\FinalProject\\BlackjackCards\\" + dc1.toString() + "Small.PNG"));
             dealerCards.add(new JLabel(new ImageIcon(cardPicture)));
-            cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\Unknown.PNG"));
+            cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\Java-bmstory\\FinalProject\\BlackjackCards\\Unknown.PNG"));
             dealerCards.add(new JLabel(new ImageIcon(cardPicture)));
             dealerCards.revalidate();
             cardPanel.revalidate();
@@ -184,7 +184,7 @@ class BlackjackFrame extends JFrame implements ActionListener{
         playerLabels.revalidate();
         BufferedImage cardPicture;
         try {
-            cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" +c.toString() + "Small.PNG"));
+            cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\Java-bmstory\\FinalProject\\BlackjackCards\\" +c.toString() + "Small.PNG"));
             playerCards.add(new JLabel(new ImageIcon(cardPicture)));
         }
         catch (Exception e) {
@@ -201,7 +201,7 @@ class BlackjackFrame extends JFrame implements ActionListener{
         for (var c : dealer.hand) {
             BufferedImage cardPicture;
             try {
-                cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\BlackjackCards\\" + c.toString() + "Small.PNG"));
+                cardPicture = ImageIO.read(new File("C:\\Users\\micha\\Desktop\\Java-bmstory\\FinalProject\\BlackjackCards\\" + c.toString() + "Small.PNG"));
                 dealerCards.add(new JLabel(new ImageIcon(cardPicture)));
                 dealerLabel.setText("DEALER: " + dealer.getTotal());
                 dealerLabel.revalidate();
